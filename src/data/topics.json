@@ -1,0 +1,93 @@
+[
+	{
+		"name": "Calculations",
+		"topics": [
+			{
+				"id": "addition",
+				"name": "Addition",
+				"description": "Addition is the process of adding numbers together to get a sum.",
+				"tags": ["math", "arithmetic", "calculations"],
+				"aliases": ["add", "plus", "sum"],
+				"display": "a + b"
+			},
+			{
+				"id": "subtraction",
+				"name": "Subtraction",
+				"description": "Subtraction is the process of taking one number away from another. It is the opposite of addition.",
+				"tags": ["math", "arithmetic", "calculations"],
+				"aliases": ["sub", "minus", "take away"],
+				"display": "a - b"
+			},
+			{
+				"id": "multiplication",
+				"name": "Multiplication",
+				"description": "Multiplication is a basic arithmetic operation that is used to find the product of two numbers.",
+				"tags": ["math", "arithmetic", "calculations"],
+				"display": "a \\times b"
+			},
+			{
+				"id": "division",
+				"name": "Division",
+				"description": "Division is the process of splitting a number into equal parts. It is the opposite of multiplication.",
+				"tags": ["math", "arithmetic", "calculations"],
+				"display": "a \\div b"
+			},
+			{
+				"id": "order-of-operations",
+				"name": "Order of Operations",
+				"description": "The order of operations is a set of rules that dictate the order in which mathematical operations should be performed.",
+				"tags": ["math", "arithmetic", "calculations"],
+				"aliases": ["pedmas", "bidmas", "bodmas"],
+				"display": "a - b \\times c"
+			}
+		]
+	},
+	{
+		"name": "Area",
+		"topics": [
+			{
+				"id": "area-quadrilateral",
+				"name": "Area of a Quadrilateral",
+				"description": "The area of a quadrilateral is the amount of space inside the shape.",
+				"tags": [
+					"math",
+					"geometry",
+					"area",
+					"shapes",
+					"2d",
+					"quadrilateral",
+					"square"
+				],
+				"display": "b \\times h = c^2"
+			},
+			{
+				"id": "area-triangle",
+				"name": "Area of a Triangle",
+				"description": "The area of a triangle is the amount of space inside the shape.",
+				"tags": [
+					"math",
+					"geometry",
+					"area",
+					"shapes",
+					"2d",
+					"triangle"
+				],
+				"display": "\\frac{b \\times h}{2} = c^2"
+			},
+			{
+				"id": "area-parallelogram",
+				"name": "Area of a Parallelogram",
+				"description": "The area of a parallelogram is the amount of space inside the shape.",
+				"tags": [
+					"math",
+					"geometry",
+					"area",
+					"shapes",
+					"2d",
+					"parallelogram"
+				],
+				"display": "b \\times h = c^2"
+			}
+		]
+	}
+]
