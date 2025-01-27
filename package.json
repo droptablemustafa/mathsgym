@@ -14,6 +14,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.0",
     "@types/react-katex": "^3.0.4",
+    "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
     "katex": "^0.16.21",
     "react": "^18.3.1",

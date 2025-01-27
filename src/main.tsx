@@ -17,6 +17,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import "./index.css";
 import Home from "./pages/Home.tsx";
@@ -25,6 +26,7 @@ import Topic from "./pages/Topic.tsx";
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
+		<Analytics />
 		<SpeedInsights />
 		<Router>
 			<Routes>

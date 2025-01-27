@@ -157,16 +157,19 @@ export default function Topic() {
 				if (allowLargerDivisor) {
 					b = generateRandom();
 				} else {
-					b = Math.floor(
-						Math.random() * (Number(a) - Number(minNumber) + 1),
-					) + Number(minNumber);
+					b =
+						Math.floor(
+							Math.random() * (Number(a) - Number(minNumber) + 1),
+						) + Number(minNumber);
 				}
 
 				if (allowInteger) {
 					while (a % b !== 0) {
-						b = Math.floor(
-							Math.random() * (Number(a) - Number(minNumber) + 1),
-						) + Number(minNumber);
+						b =
+							Math.floor(
+								Math.random() *
+									(Number(a) - Number(minNumber) + 1),
+							) + Number(minNumber);
 					}
 				}
 
