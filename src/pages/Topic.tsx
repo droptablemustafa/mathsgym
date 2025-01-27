@@ -19,7 +19,7 @@ import { useState, useEffect } from "react";
 import { BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
 import { Footer, Header } from "../components/Page";
-import { Button } from "../components/Input";
+import { Button, TextInput } from "../components/Input";
 
 export default function Topic() {
 	const { id } = useParams();
@@ -32,6 +32,9 @@ export default function Topic() {
 		display: string;
 	} | null>(null);
 	const [currentPage, setCurrentPage] = useState("topic");
+
+	const [minNumber, setMinNumber] = useState("0");
+	const [maxNumber, setMaxNumber] = useState("99");
 
 	useEffect(() => {
 		import(`../data/topics.json`).then((topicData) => {
@@ -52,32 +55,73 @@ export default function Topic() {
 		}
 	}, [topic]);
 
+	function Settings() {
+		return (
+			<>
+				<div className="m-4 flex w-[full-4] justify-between">
+					<div
+						className="flex cursor-pointer items-center justify-center rounded-[20px] border border-transparent bg-[#f9f9f9] p-[0.6em] text-[1em] font-medium transition-[border-color] duration-250 hover:border-[#646cff] dark:bg-[#1a1a1a]"
+						onClick={() => setCurrentPage("training")}
+					>
+						<span className="material-symbols-rounded">close</span>
+					</div>
+				</div>
+				<div className="flex flex-col items-center justify-center">
+					<div>
+						<h2 className="text-2xl">Minimum Number</h2>
+						<TextInput
+							placeholder="Minimum Number"
+							value={minNumber}
+							onChange={setMinNumber}
+						/>
+					</div>
+					<br />
+					<div>
+						<h2 className="text-2xl">Maximum Number</h2>
+						<TextInput
+							placeholder="Maximum Number"
+							value={maxNumber}
+							onChange={setMaxNumber}
+						/>
+					</div>
+				</div>
+			</>
+		);
+	}
+
 	function Training() {
+		function generateRandom() {
+			return (
+				Math.floor(
+					Math.random() * (Number(maxNumber) - Number(minNumber) + 1),
+				) + Number(minNumber)
+			);
+		}
 		const generateQuestion = () => {
 			if (id === "addition") {
-				const a = Math.floor(Math.random() * 100);
-				const b = Math.floor(Math.random() * 100);
+				const a = generateRandom();
+				const b = generateRandom();
 				return {
 					question: `${a} + ${b}`,
 					answer: (a + b).toString(),
 				};
 			} else if (id === "subtraction") {
-				const a = Math.floor(Math.random() * 100);
-				const b = Math.floor(Math.random() * 100);
+				const a = generateRandom();
+				const b = generateRandom();
 				return {
 					question: `${a} - ${b}`,
 					answer: (a - b).toString(),
 				};
 			} else if (id === "multiplication") {
-				const a = Math.floor(Math.random() * 100);
-				const b = Math.floor(Math.random() * 100);
+				const a = generateRandom();
+				const b = generateRandom();
 				return {
 					question: `${a} \\times ${b}`,
 					answer: (a * b).toString(),
 				};
 			} else if (id === "division") {
-				const a = Math.floor(Math.random() * 100);
-				const b = Math.floor(Math.random() * 100);
+				const a = generateRandom();
+				const b = generateRandom();
 				return {
 					question: `${a} \\div ${b}`,
 					answer: (a / b).toString(),
@@ -123,12 +167,20 @@ export default function Topic() {
 
 		return (
 			<>
-				<div className="m-4 w-12">
+				<div className="m-4 flex w-[full-4] justify-between">
 					<div
 						className="flex cursor-pointer items-center justify-center rounded-[20px] border border-transparent bg-[#f9f9f9] p-[0.6em] text-[1em] font-medium transition-[border-color] duration-250 hover:border-[#646cff] dark:bg-[#1a1a1a]"
 						onClick={() => setCurrentPage("topic")}
 					>
 						<span className="material-symbols-rounded">close</span>
+					</div>
+					<div
+						className="flex cursor-pointer items-center justify-center rounded-[20px] border border-transparent bg-[#f9f9f9] p-[0.6em] text-[1em] font-medium transition-[border-color] duration-250 hover:border-[#646cff] dark:bg-[#1a1a1a]"
+						onClick={() => setCurrentPage("settings")}
+					>
+						<span className="material-symbols-rounded">
+							settings
+						</span>
 					</div>
 				</div>
 				<main className="items-center justify-center p-[2em]">
@@ -174,6 +226,8 @@ export default function Topic() {
 		<>
 			{currentPage === "training" ? (
 				<Training />
+			) : currentPage === "settings" ? (
+				<Settings />
 			) : (
 				<>
 					<Header />

@@ -25,6 +25,26 @@ export function Button({ name, func }: { name: string; func: any }) {
 	);
 }
 
+export function TextInput({
+	placeholder,
+	value,
+	onChange,
+}: {
+	placeholder: string;
+	value: string;
+	onChange: any;
+}) {
+	return (
+		<input
+			type="text"
+			className="focus:outline-webkit-focus-ring-color cursor-pointer rounded-[20px] border border-transparent bg-[#f9f9f9] p-[0.6em_1.2em] text-[1em] font-medium transition-[border-color] duration-250 hover:border-[#646cff] focus:outline dark:bg-[#1a1a1a]"
+			placeholder={placeholder}
+			value={value}
+			onChange={(e) => onChange(e.target.value)}
+		/>
+	);
+}
+
 export function Search({
 	placeholder,
 	searchQuery,

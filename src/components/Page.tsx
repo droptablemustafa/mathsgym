@@ -76,5 +76,3 @@ export function Footer() {
 		</div>
 	);
 }
-
-export default [Header, Footer];
