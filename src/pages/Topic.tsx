@@ -19,7 +19,7 @@ import { useState, useEffect } from "react";
 import { BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
 import { Footer, Header } from "../components/Page";
-import { Button, TextInput } from "../components/Input";
+import { Button, CheckboxInput, TextInput } from "../components/Input";
 
 export default function Topic() {
 	const { id } = useParams();
@@ -35,6 +35,9 @@ export default function Topic() {
 
 	const [minNumber, setMinNumber] = useState("0");
 	const [maxNumber, setMaxNumber] = useState("99");
+
+	const [allowLargerDivisor, setLargerDivisor] = useState(false);
+	const [allowInteger, setInteger] = useState(true);
 
 	useEffect(() => {
 		import(`../data/topics.json`).then((topicData) => {
@@ -84,6 +87,34 @@ export default function Topic() {
 							onChange={setMaxNumber}
 						/>
 					</div>
+					{id === "division" ? (
+						<>
+							<br />
+							<div>
+								<CheckboxInput
+									label="Allow Divisor to be greater then Dividend"
+									checked={allowLargerDivisor}
+									onChange={setLargerDivisor}
+								/>
+							</div>
+						</>
+					) : (
+						<></>
+					)}
+					{id === "division" ? (
+						<>
+							<br />
+							<div>
+								<CheckboxInput
+									label="Only allow correct answer to be an Integer"
+									checked={allowInteger}
+									onChange={setInteger}
+								/>
+							</div>
+						</>
+					) : (
+						<></>
+					)}
 				</div>
 			</>
 		);
@@ -121,7 +152,24 @@ export default function Topic() {
 				};
 			} else if (id === "division") {
 				const a = generateRandom();
-				const b = generateRandom();
+
+				let b;
+				if (allowLargerDivisor) {
+					b = generateRandom();
+				} else {
+					b = Math.floor(
+						Math.random() * (Number(a) - Number(minNumber) + 1),
+					) + Number(minNumber);
+				}
+
+				if (allowInteger) {
+					while (a % b !== 0) {
+						b = Math.floor(
+							Math.random() * (Number(a) - Number(minNumber) + 1),
+						) + Number(minNumber);
+					}
+				}
+
 				return {
 					question: `${a} \\div ${b}`,
 					answer: (a / b).toString(),

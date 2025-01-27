@@ -45,6 +45,28 @@ export function TextInput({
 	);
 }
 
+export function CheckboxInput({
+	label,
+	checked,
+	onChange,
+}: {
+	label: string;
+	checked: boolean;
+	onChange: (checked: boolean) => void;
+}) {
+	return (
+		<label className="flex cursor-pointer items-center space-x-2">
+			<input
+				type="checkbox"
+				className="h-4 w-4 rounded border-gray-300 text-[#646cff] focus:ring-[#646cff] dark:bg-[#1a1a1a]"
+				checked={checked}
+				onChange={(e) => onChange(e.target.checked)}
+			/>
+			<h2 className="text-2xl">{label}</h2>
+		</label>
+	);
+}
+
 export function Search({
 	placeholder,
 	searchQuery,
